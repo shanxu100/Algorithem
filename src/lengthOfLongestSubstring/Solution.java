@@ -6,6 +6,12 @@ import java.util.HashMap;
  * Created by lianglitu on 16/10/2.
  */
 public class Solution {
+
+    /**
+     * 效率最低
+     * @param s
+     * @return
+     */
     public int lengthOfLongestSubstring(String s) {
         char[] c=s.toCharArray();
         HashMap<Character,Character> map=new HashMap<Character, Character>();
@@ -40,10 +46,39 @@ public class Solution {
 
     }
 
+
+    public int lengthOfLongestSubstring_2(String s)
+    {
+        char[] c=s.toCharArray();
+        HashMap<Character ,Integer> map=new HashMap<>();
+        int count=0;
+
+        for (int i=0,j=0;j<s.length(); )
+        {
+            if(!map.containsKey(c[j]))
+            {
+                map.put(c[j],j);
+                j++;
+
+            }else
+            {
+                map.remove(c[i]);
+                i++;
+            }
+            count=count>map.size()?count:map.size();
+        }
+        return count;
+
+
+    }
+
+
+
+
     public static void main(String[] args)
     {
         Solution s=new Solution();
-        System.out.println(s.lengthOfLongestSubstring("abcabcbb"));
+        System.out.println(s.lengthOfLongestSubstring_2("aab"));
     }
 
 
