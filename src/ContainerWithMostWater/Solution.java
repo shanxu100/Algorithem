@@ -7,30 +7,36 @@ public class Solution {
 
     public int maxArea(int[] height) {
 
-        int count=0;
-        int line=0;
 
-        for(int i=0;i<height.length-1;i++)
-        {
-            int tmpmini=height[i]<height[i+1]?height[i]:height[i+1];
+        int i = 0, j = height.length - 1;
+        int count = 0, mini = 0;
 
-            count=count>tmpmini?count:tmpmini;
+        while (i < j) {
+            /**
+             * 就是这一句
+             */
+            mini = height[i] < height[j] ? height[i] : height[j];
+            mini=Math.min(height[i],height[j]);
 
-            if (tmpmini>count)
-            {
-                count=tmpmini;
-                line=i+1;
+            count = count > (mini * (j - i)) ? count : (mini * (j - i));
+
+            if (height[i] < height[j]) {
+                i++;
+            } else {
+                j--;
             }
+
+
         }
-        return line;
+
+        return count;
 
 
     }
 
 
-    public static void main(String[] args)
-    {
-        Solution s=new Solution();
-        System.out.println(s.maxArea());
+    public static void main(String[] args) {
+        Solution s = new Solution();
+        System.out.println(s.maxArea(new int[]{1, 1}));
     }
 }
