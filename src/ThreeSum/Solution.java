@@ -54,33 +54,42 @@ public class Solution {
 
         HashMap<Integer, Integer> map = new HashMap<>();
         List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(nums);
 
         if (nums.length < 3) {
             return result;
         }
 
-        Set<List<Integer>> set = new HashSet<>();
-        int index = 0;
-
-        Arrays.sort(nums);
         for (int i = 0; i < nums.length; i++) {
             map.put(nums[i], i);
         }
 
+
+        Set<List<Integer>> set = new HashSet<>();
+        int need = 0;
+
+        int start = 0, end = nums.length - 1;
+
+        while (start < end) {
+            need = 0 - nums[start] - nums[end];
+        }
+
+
         for (int i = 0; i < nums.length && nums[i] <= 0; i++) {
 
-            for (int j = nums.length - 1; j >i && nums[j] >= 0 ; j--) {
+            for (int j = nums.length - 1; j > i && nums[j] >= 0; j--) {
 
-                int need = 0 - nums[i] - nums[j];
-                if (need < nums[i] || need > nums[j] || !map.containsKey(need)) {
+                int tmp = 0 - nums[i] - nums[j];
+                if (tmp < nums[i] || tmp > nums[j] || !map.containsKey(tmp)) {
                     continue;
                 }
 
-                index = map.get(need);
-                if (index != i && index != j) {
+                need = map.get(tmp);
+                if (need != i && need != j) {
                     List<Integer> tmp_list = new ArrayList<>();
+                    tmp_list.clear();
                     tmp_list.add(nums[i]);
-                    tmp_list.add(need);
+                    tmp_list.add(tmp);
                     tmp_list.add(nums[j]);
                     set.add(tmp_list);
                 }
@@ -94,6 +103,69 @@ public class Solution {
 
 
     }
+
+    public List<List<Integer>> try3(int[] nums) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        List<List<Integer>> result = new ArrayList<>();
+        Set<List<Integer>> set = new HashSet<>();
+        int length = nums.length;
+
+        if (length < 3) {
+            return result;
+        }
+
+        Arrays.sort(nums);
+
+        for (int i = 0; i < length; i++) {
+
+            map.put(nums[i], i);
+        }
+
+
+        int need = 0;
+        int index = 0;
+
+
+        for (int i = 0; i < length - 2; i++) {
+
+            int start = i, end = length - 1;
+
+            while (start < end) {
+
+                need = 0 - nums[start] - nums[end];
+
+                if (need < nums[start] || need > nums[end] || !map.containsKey(need)) {
+
+                    end--;
+                    continue;
+
+                }
+
+                index = map.get(need);
+
+                if ((index != start && index != end)) {
+                    List<Integer> tmp_list = new ArrayList<>();
+                    tmp_list.add(nums[start]);
+                    tmp_list.add(need);
+                    tmp_list.add(nums[end]);
+                    set.add(tmp_list);
+
+                }
+                end--;
+
+
+            }
+        }
+
+        for (List list : set) {
+            result.add(list);
+        }
+
+        return result;
+
+
+    }
+
 
     public void testList() {
         List<Integer> list = new ArrayList<>();
@@ -132,9 +204,9 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        List<List<Integer>> result = solution.try2(new int[]{-1,0,0,1});
+        List<List<Integer>> result = solution.try3(new int[]{-2,0,1,1,2});
         //List<List<Integer>> result = solution.threeSum(new int[]{0, 0 ,0});
-        solution.threeSum(new int[]{0, 0});
+        //solution.threeSum(new int[]{0, 0});
         for (int i = 0; i < result.size(); i++) {
             for (int j = 0; j < result.get(i).size(); j++) {
                 System.out.print(result.get(i).get(j) + "\t");
