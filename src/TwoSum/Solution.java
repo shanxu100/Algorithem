@@ -15,6 +15,7 @@ public class Solution {
             map.put(nums[i],i);
         }
 
+        System.out.println("map size: "+map.size());
 
         for(int i=0;i<nums.length-1;i++)
         {
@@ -56,8 +57,8 @@ public class Solution {
     public static void main(String[] args)
     {
         Solution s=new Solution();
-        int[] nums=new int[]{11,15,2,7};
-        int [] result=s.twoSum(nums,9);
+        int[] nums=new int[]{2,1,2};
+        int [] result=s.twoSum(nums,4);
         for(int i :result)
         {
             System.out.println(i);
