@@ -5,6 +5,8 @@ import java.util.*;
 
 /**
  * Created by Guan on 2016/10/8.
+ *
+ * Solved
  */
 public class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
@@ -190,9 +192,18 @@ public class Solution {
     }
 
     public void testSet() {
+        /**
+         * Set中的元素不可以重复
+         * 不仅基本数据类型适用，其他的数据类型也适用。
+         * 比如：两个List，分别含有两个元素“1”和“2”。
+         * 这两个List通过“==”比较结果为false，但在Set中就属于相同的元素。
+         */
         List<Integer> l1 = new ArrayList<>();
         List<Integer> l2 = new ArrayList<>();
+
         l1.add(1);
+        l1.add(2);
+
         l2.add(1);
         l2.add(2);
 
@@ -211,8 +222,7 @@ public class Solution {
     public static void main(String[] args) {
         Solution solution = new Solution();
         List<List<Integer>> result = solution.try4(new int[]{0,0,0});
-        //List<List<Integer>> result = solution.threeSum(new int[]{0, 0 ,0});
-        //solution.threeSum(new int[]{0, 0});
+
         for (int i = 0; i < result.size(); i++) {
             for (int j = 0; j < result.get(i).size(); j++) {
                 System.out.print(result.get(i).get(j) + "\t");
@@ -221,7 +231,7 @@ public class Solution {
         }
 
 
-        //solution.testSet();
+        solution.testSet();
 
 
     }

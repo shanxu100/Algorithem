@@ -4,6 +4,12 @@ package RemoveDuplicatesfromSortedArray;
  * Created by guan on 10/9/16.
  */
 public class Solution {
+    /**
+     * Solved
+     *
+     * @param nums
+     * @return
+     */
     public int removeDuplicates(int[] nums) {
         int result = 1;
 

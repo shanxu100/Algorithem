@@ -2,6 +2,8 @@ package SearchInsertPosition;
 
 /**
  * Created by guan on 10/9/16.
+ *
+ * Solved 二分查找
  */
 public class Solution {
     public int searchInsert(int[] nums, int target) {

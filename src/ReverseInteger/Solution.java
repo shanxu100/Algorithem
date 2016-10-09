@@ -2,6 +2,8 @@ package ReverseInteger;
 
 /**
  * Created by lianglitu on 16/10/6.
+ *
+ * Not Solved
  */
 public class Solution {
     public int reverse(int x) {
