@@ -52,54 +52,24 @@ public class Solution {
 
     public List<List<Integer>> try2(int[] nums) {
 
-        HashMap<Integer, Integer> map = new HashMap<>();
-        List<List<Integer>> result = new ArrayList<>();
         Arrays.sort(nums);
-
-        if (nums.length < 3) {
-            return result;
-        }
-
-        for (int i = 0; i < nums.length; i++) {
-            map.put(nums[i], i);
-        }
-
-
-        Set<List<Integer>> set = new HashSet<>();
-        int need = 0;
-
-        int start = 0, end = nums.length - 1;
-
-        while (start < end) {
-            need = 0 - nums[start] - nums[end];
-        }
-
-
-        for (int i = 0; i < nums.length && nums[i] <= 0; i++) {
-
-            for (int j = nums.length - 1; j > i && nums[j] >= 0; j--) {
-
-                int tmp = 0 - nums[i] - nums[j];
-                if (tmp < nums[i] || tmp > nums[j] || !map.containsKey(tmp)) {
-                    continue;
-                }
-
-                need = map.get(tmp);
-                if (need != i && need != j) {
-                    List<Integer> tmp_list = new ArrayList<>();
-                    tmp_list.clear();
-                    tmp_list.add(nums[i]);
-                    tmp_list.add(tmp);
-                    tmp_list.add(nums[j]);
-                    set.add(tmp_list);
+        List<List<Integer>> res = new LinkedList<>();
+        for (int i = 0; i < nums.length - 2; i++) {
+            if (i == 0 || (i > 0 && nums[i] != nums[i - 1])) {
+                int lo = i + 1, hi = nums.length - 1, sum = 0 - nums[i];
+                while (lo < hi) {
+                    if (nums[lo] + nums[hi] == sum) {
+                        res.add(Arrays.asList(nums[i], nums[lo], nums[hi]));
+                        while (lo < hi && nums[lo] == nums[lo + 1]) lo++;
+                        while (lo < hi && nums[hi] == nums[hi - 1]) hi--;
+                        lo++;
+                        hi--;
+                    } else if (nums[lo] + nums[hi] < sum) lo++;
+                    else hi--;
                 }
             }
         }
-        for (List list : set) {
-            result.add(list);
-        }
-
-        return result;
+        return res;
 
 
     }
@@ -144,11 +114,10 @@ public class Solution {
                 index = map.get(need);
 
                 if ((index != start && index != end)) {
-                    List<Integer> tmp_list = new ArrayList<>();
-                    tmp_list.add(nums[start]);
-                    tmp_list.add(need);
-                    tmp_list.add(nums[end]);
-                    set.add(tmp_list);
+                    /**
+                     * Arrays.asList()方法要比每次new ArrayList<>() 快.
+                     */
+                    set.add(Arrays.asList(nums[start], need, nums[end]));
 
                 }
                 end--;
@@ -163,6 +132,43 @@ public class Solution {
 
         return result;
 
+
+    }
+
+
+    public List<List<Integer>> try4(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        Arrays.sort(nums);
+
+        for (int i = 0; i < nums.length - 2; i++) {
+            if (i > 0 && nums[i - 1] == nums[i]) {
+                continue;
+            }
+            int start = i + 1, end = nums.length - 1;
+            int sum = 0 - nums[i];
+
+            while (start < end) {
+                if (nums[start] + nums[end] == sum) {
+                    result.add(Arrays.asList(nums[i], nums[start], nums[end]));
+                    while (start < end && nums[start + 1] == nums[start]) {
+                        start++;
+                    }
+                    while (start < end && nums[end - 1] == nums[end]) {
+                        end--;
+                    }
+                    start++;
+                    end--;
+
+                } else if (start < end && nums[start] + nums[end] > sum) {
+                    end--;
+                } else {
+                    start++;
+                }
+
+            }
+        }
+
+        return result;
 
     }
 
@@ -204,7 +210,7 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        List<List<Integer>> result = solution.try3(new int[]{-2,0,1,1,2});
+        List<List<Integer>> result = solution.try4(new int[]{0,0,0});
         //List<List<Integer>> result = solution.threeSum(new int[]{0, 0 ,0});
         //solution.threeSum(new int[]{0, 0});
         for (int i = 0; i < result.size(); i++) {
