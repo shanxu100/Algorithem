@@ -7,6 +7,8 @@ import java.util.List;
 
 /**
  * Created by guan on 10/9/16.
+ *
+ * Not Solved
  */
 public class Solution {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {

@@ -6,6 +6,8 @@ import java.util.StringJoiner;
 
 /**
  * Created by guan on 10/9/16.
+ *
+ * Solved
  */
 public class Solution {
     /*
