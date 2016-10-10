@@ -3,7 +3,10 @@ package ThreeSumClosest;
 import java.util.Arrays;
 
 /**
+ *
  * Created by guan on 10/9/16.
+ *
+ * Solved
  */
 public class Solution {
     public int threeSumClosest(int[] nums, int target) {

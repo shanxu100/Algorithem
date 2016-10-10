@@ -6,8 +6,10 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * 最长子字符串
+ *
  * Created by lianglitu on 16/10/2.
- * <p>
+ *
  * Solved
  */
 public class Solution {

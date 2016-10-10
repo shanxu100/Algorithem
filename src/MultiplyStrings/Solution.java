@@ -6,61 +6,22 @@ import java.util.Arrays;
 import java.util.StringJoiner;
 
 /**
+ * 大数乘法
+ *
+ * Solved
+ *
  * Created by guan on 10/10/16.
  */
 public class Solution {
+
+
     /**
-     * 把两个数的乘法变为n个数的加法
+     * 大数乘法
      *
      * @param num1
      * @param num2
      * @return
      */
-    public String multiply(String num1, String num2) {
-
-        int[] res = new int[num1.length() + num2.length() + 2];
-        //char[] c1=num1.toCharArray();
-        char[] c2 = num2.toCharArray();
-        int[] n2 = new int[c2.length];
-        int count = 0;
-        int jinwei = 0;
-        int tmp = 0;
-
-        for (int i = 0, end = c2.length - 1; i < c2.length; i++) {
-            n2[end - i] = c2[i] - '0';
-        }
-
-        //这一步Integer.valueOf(num1)表明，受限于num1的大小。
-        for (int i = 0; i < Integer.valueOf(num1); i++) {
-            //下面计算num1个num2相加
-            while (true) {
-
-                if (jinwei == 0 && count >= n2.length) {
-                    break;
-                }
-
-                if (count < n2.length) {
-                    tmp = res[count] + n2[count] + jinwei;
-                } else {
-                    tmp = res[count] + jinwei;
-                }
-
-                res[count] = (tmp) % 10;
-                jinwei = (tmp) / 10;
-                count++;
-            }
-
-            jinwei = 0;
-            count = 0;
-        }
-
-        //将res翻转过来成String再返回
-        //return (res);
-
-        return null;
-    }
-
-
     public String multiply2(String num1, String num2) {
         char[] c1 = num1.toCharArray();
         char[] c2 = num2.toCharArray();

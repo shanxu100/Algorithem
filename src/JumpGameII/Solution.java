@@ -86,7 +86,8 @@ public class Solution {
     }
 
     /**
-     * java里对于数组的处理有一个专门的工具类：java.util.Arrays
+     *
+     java里对于数组的处理有一个专门的工具类：java.util.Arrays
      这个类提供了5个功能：
      1，将数组转换成java.util.ArrayList类型；【asList()】
      2，数组的排序；【sort()】

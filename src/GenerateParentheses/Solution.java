@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.StringJoiner;
 
 /**
+ * 排列组合，前缀
+ *
  * Created by guan on 10/9/16.
  *
  * Solved

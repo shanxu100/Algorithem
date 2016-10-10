@@ -1,7 +1,11 @@
 package RemoveDuplicatesfromSortedArray;
 
 /**
+ * 去除重复的元素，Time:O(N) Space:O(1)
+ *
  * Created by guan on 10/9/16.
+ *
+ * Solved
  */
 public class Solution {
     /**
