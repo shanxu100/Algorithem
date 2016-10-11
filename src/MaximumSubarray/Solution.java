@@ -65,12 +65,13 @@ public class Solution {
         max[0] = nums[0];
 
         for (int i = 1; i < nums.length; i++) {
+            /**
+             * max[i]表示，以nums[i]结尾的子串的和的最大值
+             */
             max[i] = (max[i - 1] + nums[i]) > nums[i] ? (max[i - 1] + nums[i]) : nums[i];
             maxsum = max[i] > maxsum ? max[i] : maxsum;
         }
-
         return maxsum;
-
 
     }
 
