@@ -2,7 +2,7 @@ package MaximumSubarray;
 
 /**
  * Created by guan on 10/9/16.
- *
+ * <p>
  * Not Solved
  */
 public class Solution {
@@ -54,9 +54,29 @@ public class Solution {
 
     }
 
+
+    public int maxSubArray2(int[] nums) {
+
+        if (nums.length==0)
+            return 0;
+
+        int[] max = new int[nums.length];
+        int maxsum = nums[0];
+        max[0] = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            max[i] = (max[i - 1] + nums[i]) > nums[i] ? (max[i - 1] + nums[i]) : nums[i];
+            maxsum = max[i] > maxsum ? max[i] : maxsum;
+        }
+
+        return maxsum;
+
+
+    }
+
     public static void main(String[] args) {
 
         Solution solution = new Solution();
-        System.out.println(solution.maxSubArray(new int[]{}));
+        System.out.println(solution.maxSubArray2(new int[]{1}));
     }
 }
