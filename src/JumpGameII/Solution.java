@@ -65,6 +65,7 @@ public class Solution {
         int len=nums.length,min=Integer.MAX_VALUE-1;
         int[] step=new int[len];
 
+        int tmp=len-1;
         step[len-1]=0;
         for (int i=len-2;i>=0;i--)
         {
