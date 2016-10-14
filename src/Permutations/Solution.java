@@ -55,7 +55,9 @@ public class Solution {
     }
 
     /**
-     * 全排列
+     * 全排列,训练用，一串数字用String表示
+     *
+     * 深度优先搜索，第归
      *
      * @param start  需要全排列的序列的第一个元素的下标
      * @param end    需要全排列的序列的最后一个元素的下标
