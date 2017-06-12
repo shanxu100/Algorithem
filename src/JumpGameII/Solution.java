@@ -4,53 +4,32 @@ import java.util.Arrays;
 
 /**
  * Solved
- *
+ * <p>
  * Created by guan on 10/10/16.
  */
 public class Solution {
 
     /**
-     * O(N*N) 超时
+     * AC
      *
      * @param nums
      * @return
      */
     public int jump(int[] nums) {
-
         int length = nums.length;
-        int[][] matrix = new int[length][length];
-        int[] min = new int[length];
+        int tmp;
+        int[] steps = new int[length];
+        steps[0] = 0;
+        for (int i = 0, j = 1; i < length && j < length; i++) {
+            tmp = nums[i] + i < length - 1 ? nums[i] + i : length - 1;
 
-        matrix[0][0] = 0;
-        for (int i = 1; i < length; i++) {
-            matrix[0][i] = Integer.MAX_VALUE;
-            min[i] = Integer.MAX_VALUE;
-        }
-
-        for (int i = 0; i < length; i++) {
-            //matrix[i][i]=min[i];
-
-            for (int j = i + 1, k = 0; k < nums[i] && j < length; k++, j++) {
-                matrix[i][j] = min[i] + 1;
-                min[j] = matrix[i][j] < min[j] ? matrix[i][j] : min[j];
+            while (j <= tmp) {
+                steps[j] = steps[i] + 1;
+                j++;
             }
 
         }
-
-        for (int[] t : matrix) {
-            for (int i : t) {
-                System.out.print(i + "\t\t");
-            }
-            System.out.println();
-        }
-
-        for (int i : min) {
-            System.out.print(i + "\t\t");
-        }
-
-        return min[length - 1];
-
-
+        return steps[length - 1];
     }
 
     /**
@@ -80,12 +59,13 @@ public class Solution {
 
     /**
      * 终于不超时了
+     *
      * @param nums
      * @return
      */
     public int jump3(int[] nums) {
-        int len ;
-        if ((len=nums.length)==1)
+        int len;
+        if ((len = nums.length) == 1)
             return 0;
 
         int[] steps = new int[len];
@@ -110,9 +90,36 @@ public class Solution {
     }
 
 
+    /**
+     * 超时
+     *
+     * @param nums
+     * @return
+     */
+    public int jump4(int[] nums) {
+        int length = nums.length;
+        int steps[] = new int[length];
+        for (int i = 0; i < length; i++) {
+            steps[i] = Integer.MAX_VALUE - 1000;
+        }
+        steps[0] = 0;
+
+        for (int i = 0; i < length - 1; i++) {
+
+            int j = 1;
+            while (j <= nums[i] && i + j < length) {
+                steps[i + j] = steps[i] + 1 < steps[i + j] ? steps[i] + 1 : steps[i + j];
+                j++;
+            }
+        }
+        return steps[length - 1];
+
+    }
+
+
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println("\n" + solution.jump3(new int[]{0}));
+        System.out.println("\n" + solution.jump(new int[]{2, 3, 1, 1, 1, 1, 4}));
 
     }
 
