@@ -1,4 +1,4 @@
-package NewCode;
+package nowcoder.NewCode;
 
 import java.text.DecimalFormat;
 import java.util.Scanner;

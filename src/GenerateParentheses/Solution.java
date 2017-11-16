@@ -2,7 +2,6 @@ package GenerateParentheses;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringJoiner;
 
 /**
  * 排列组合，前缀
