@@ -47,6 +47,7 @@ public class POstOpera {
                         if (stack.isEmpty()) {
 //                            stack.push(s);
                             break;
+
                         } else {
                             top = stack.peek();
                         }
