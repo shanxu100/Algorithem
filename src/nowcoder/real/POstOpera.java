@@ -43,7 +43,7 @@ public class POstOpera {
                     String top = stack.peek();
                     while (compareOperation(top, s)) {
                         //出栈
-                        sb.append(stack.pop());
+                        sb.append(stack.pop()+" ");
                         if (stack.isEmpty()) {
 //                            stack.push(s);
                             break;
@@ -58,18 +58,18 @@ public class POstOpera {
             }
             if (s.equals(")")) {
                 while (!stack.peek().equals("(")) {
-                    sb.append(stack.pop());
+                    sb.append(stack.pop()+" ");
                 }
                 stack.pop();
                 continue;
             }
-            sb.append(s);
+            sb.append(s+" ");
 
         }
         while (!stack.empty()) {
-            sb.append(stack.pop());
+            sb.append(stack.pop()+" ");
         }
-        System.out.println(sb.toString());
+        System.out.println(sb.deleteCharAt(sb.length()-1).toString());
 
 
     }
