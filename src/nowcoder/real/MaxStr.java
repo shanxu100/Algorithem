@@ -14,6 +14,7 @@ public class MaxStr {
         while (in.hasNextLine()) {
             String str = in.nextLine();
             MaxString(str);
+            //abcd12345ed125ss123058789
 
         }
     }
