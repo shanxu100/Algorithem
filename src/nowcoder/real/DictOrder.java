@@ -47,10 +47,11 @@ public class DictOrder {
 
     public static int pOfN(int p, int n) {
         int mysum = 1;
-        for (int i = n - p + 1; i <= n; i++) {
-            mysum *= i;
+        for (int i = n - p; i < n; i++) {
+            mysum *= (i + 1);
         }
-        return mysum / jiecheng(p);
+        int result= mysum / jiecheng(p);
+        return result;
     }
 
     public static int numOfP(int p, int n, char a) {
