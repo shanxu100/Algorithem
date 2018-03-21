@@ -13,8 +13,9 @@ public class MaxStr {
 
         while (in.hasNextLine()) {
             String str = in.nextLine();
-            MaxString(str);
+            String result = maxString(str);
             //abcd12345ed125ss123058789
+            System.out.println(result + "," + result.length());
 
         }
     }
@@ -26,11 +27,12 @@ public class MaxStr {
         return false;
     }
 
-    public static String MaxString(String str) {
-        if (str == "") {
+    public static String maxString(String str) {
+        if (str.equals("")) {
             return str;
         }
-        int len = 0, index = 0;
+        int length = 0;
+        int index = 0;
         char[] chars = str.toCharArray();
         for (int i = 0; i < chars.length; ) {
             int temp = 0;
@@ -38,24 +40,24 @@ public class MaxStr {
                 for (int j = i; j < chars.length; j++) {
                     if (isNum(chars[j])) {
                         temp++;
-                    } else {
-                        break;
+                        continue;
                     }
+                    break;
                 }
-                if (temp >= len && temp != 0) {
-                    len = temp;
+                //&& temp != 0
+                if (temp >= length ) {
+                    length = temp;
                     index = i;
                 }
-                i = i + temp;
+                i += temp;
             } else {
                 i++;
             }
         }
-        String result = "";
-        if (len > 0)
-        {
-            result = str.substring(index, len);
+        if (length > 0) {
+            return str.substring(index, index + length);
         }
-        return result;
+        return "";
     }
+
 }
