@@ -70,8 +70,6 @@ public class POstOpera {
             sb.append(stack.pop()+" ");
         }
         System.out.println(sb.deleteCharAt(sb.length()-1).toString());
-
-
     }
 
     /**
