@@ -38,6 +38,18 @@ public class huajia {
                 }
             }
 
+            /**
+             *
+             *
+             *
+             * 4 4
+             YXXB
+             XYGX
+             XBYY
+             BXXY
+             *
+             *
+             */
             System.out.println(result);
 
         }
