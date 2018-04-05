@@ -13,6 +13,7 @@ public class zhipai {
         Scanner in = new Scanner(System.in);
 
 
+
         int n;
         Integer[] a;
         while (in.hasNextInt()) {
