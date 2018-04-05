@@ -10,7 +10,7 @@ public class huajia {
 
     public static int result;
     public static int N, M;
-    public static String[][] matrix;
+    public static char[][] matrix;
 
 
     public static void main(String[] args) {
@@ -21,24 +21,25 @@ public class huajia {
             String[] tmp = in.nextLine().split(" ");
             N = Integer.valueOf(tmp[0]);
             M = Integer.valueOf(tmp[1]);
-            matrix = new String[N][];
+            matrix = new char[N][];
             for (int i = 0; i < N; i++) {
-                matrix[i] = in.nextLine().split(" ");
+                matrix[i] = in.nextLine().toCharArray();
             }
             result = 0;
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < M; j++) {
-                    if (matrix[i][j].equals("B")) {
+                    if (matrix[i][j] == 'B') {
                         fixB(i, j);
-                    } else if (matrix[i][j].equals("Y")) {
+                    } else if (matrix[i][j] == 'Y') {
                         fixY(i, j);
-                    } else if (matrix[i][j].equals("G")) {
+                    } else if (matrix[i][j] == 'G') {
                         fixG(i, j);
                     }
                 }
             }
 
             /**
+             *
              *
              *
              *
@@ -66,10 +67,10 @@ public class huajia {
         int x = bx, y = by;
 
         while (x < N && x >= 0 && y >= 0 && y < M) {
-            if (matrix[x][y].equals("G")) {
-                matrix[x][y] = "B";
+            if (matrix[x][y]=='G') {
+                matrix[x][y] ='B';
             } else {
-                matrix[x][y] = "X";
+                matrix[x][y] = 'X';
             }
             x++;
             y++;
@@ -77,10 +78,10 @@ public class huajia {
         x = bx;
         y = by;
         while (x < N && x >= 0 && y >= 0 && y < M) {
-            if (matrix[x][y].equals("G")) {
-                matrix[x][y] = "B";
+            if (matrix[x][y]=='G') {
+                matrix[x][y] ='B';
             } else {
-                matrix[x][y] = "X";
+                matrix[x][y] = 'X';
             }
             x--;
             y--;
@@ -91,10 +92,10 @@ public class huajia {
         result++;
         int x = bx, y = by;
         while (x < N && x >= 0 && y >= 0 && y < M) {
-            if (matrix[x][y].equals("G")) {
-                matrix[x][y] = "Y";
+            if (matrix[x][y]=='G') {
+                matrix[x][y] ='Y';
             } else {
-                matrix[x][y] = "X";
+                matrix[x][y] = 'X';
             }
             x++;
             y--;
@@ -102,10 +103,10 @@ public class huajia {
         x = bx;
         y = by;
         while (x < N && x >= 0 && y >= 0 && y < M) {
-            if (matrix[x][y].equals("G")) {
-                matrix[x][y] = "Y";
+            if (matrix[x][y]=='G') {
+                matrix[x][y] ='Y';
             } else {
-                matrix[x][y] = "X";
+                matrix[x][y] = 'X';
             }
             x--;
             y++;
