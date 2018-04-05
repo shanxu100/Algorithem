@@ -10,7 +10,6 @@ import java.util.TreeSet;
  * @date Created on 2018/3/23
  */
 public class MagicSquare {
-
     public static void main(String[] args) {
         int n;
         Scanner in = new Scanner(System.in);
