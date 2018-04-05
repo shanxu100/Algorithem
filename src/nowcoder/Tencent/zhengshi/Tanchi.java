@@ -28,13 +28,13 @@ public class Tanchi {
     public static int eat(int N, int M) {
 
 //        N--;
-//        int num1 = 2 << (N - 1);
-        double num1 = Math.pow(2, N - 1);
+        int num1 = 1 << (N - 1);
+//        double num1 = Math.pow(2, N - 1);
 
-//        int num2 = (2 << N) - 1;
-        double num2 = Math.pow(2, N) - 1;
+        int num2 = (1 << N) - 1;
+//        double num2 = Math.pow(2, N) - 1;
 
-        int result = (int) (M * (num1 / num2));
+        int result = (int) (M * num1 / num2);
         return result;
     }
 }
