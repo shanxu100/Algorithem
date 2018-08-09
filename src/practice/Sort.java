@@ -8,7 +8,7 @@ import java.util.logging.Level;
  * @date Created on 2018/3/23
  */
 public class Sort {
-    public static int n = 10;
+    public static int n = 20;
     public static int[] data = new int[n];
 
     public static void main(String[] args) {
@@ -56,7 +56,7 @@ public class Sort {
                 right--;
             }
             a[left] = a[right];
-            while (left < right && a[left] <= mid) {
+            while (left < right && a[left] < mid) {
                 left++;
             }
             a[right] = a[left];
