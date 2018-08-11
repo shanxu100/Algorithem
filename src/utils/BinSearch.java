@@ -1,28 +1,28 @@
-package nowcoder.toutiao;
+package utils;
 
 /**
  * @author Guan
  * @date Created on 2018/3/23
  */
 public class BinSearch {
-    public static int n = 9;
+    public static int n = 8;
     public static int[] data = new int[n];
 
     public static void main(String[] args) {
         for (int i = 0; i < data.length; i++) {
-            data[i] = 3;
+            data[i] = i * i;
         }
 //        data[9] = 10;
-        data[4] = 3;
-        data[5] = 3;
+//        data[4] = 3;
+//        data[5] = 3;
         for (int i : data) {
             System.out.print(i + " ");
         }
 
         System.out.println();
-        System.out.println(BinarySearchLast(data, 3));
-        System.out.println(BinarySearchFirst(data, 3));
-        System.out.println(BinarySearchHand(data, 3));
+//        System.out.println(BinarySearchLast(data, 3));
+//        System.out.println(BinarySearchFirst(data, 3));
+        System.out.println(BinarySearchHand(data, 15));
 
     }
 
@@ -81,7 +81,8 @@ public class BinSearch {
 
 
     /**
-     * 当有多个元素值与目标元素相等时，返回 <P>第一个</P>元素的下标
+     * 只有一个元素和目标相等，返回这个元素元素的下标
+     * 否则返回比target大的最小元素，（或者比target小的最大元素）
      *
      * @param data
      * @param target
@@ -101,6 +102,10 @@ public class BinSearch {
             }
         }
 
+        //并没有一个元素和target相等。此时left=right+1
+        //说明target在data[right]和data[left]中间，
+        //即：data[right] < target < data[left]
+        //所以根据业务，返回 right 或者 left 即可
         return -1;
     }
 

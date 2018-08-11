@@ -6,6 +6,7 @@ import java.util.TreeSet;
 
 /**
  * 未完成
+ *
  * @author Guan
  * @date Created on 2018/8/11
  */
@@ -37,24 +38,41 @@ public class Ta {
             System.out.println(node.toString());
         }
         Node first = treeSet.first();
-        Node last = treeSet.last();
-        last.h = 0;
+        first.h = 100;
+        treeSet.add(first);
+        System.out.println("=======");
         for (Node node : treeSet) {
             System.out.println(node.toString());
         }
-        System.out.println("0 2");
-        System.out.println("2 1");
-        System.out.println("2 3");
+//        System.out.println("0 2");
+//        System.out.println("2 1");
+//        System.out.println("2 3");
 
 
     }
 
     public static class Node implements Comparable<Node> {
-        int index, h;
+        final int index;
+        int h;
 
         public Node(int index, int h) {
             this.index = index;
             this.h = h;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Node node = (Node) o;
+
+            return index == node.index;
+        }
+
+        @Override
+        public int hashCode() {
+            return index;
         }
 
         @Override
@@ -67,12 +85,17 @@ public class Ta {
 
         @Override
         public int compareTo(Node o) {
+            if (this.index == o.index) {
+                System.out.println("compareTo相同==index" + index);
+                return 0;
+            }
             int result = 0;
             if (this.h > o.h) {
                 result = 1;
             } else {
                 result = -1;
             }
+            System.out.println(this.toString()+"====="+o.toString());
             return result;
         }
     }
