@@ -4,6 +4,7 @@ import java.util.*;
 
 /**
  * 未完成
+ *
  * @author Guan
  * @date Created on 2018/1/28
  */
@@ -18,9 +19,9 @@ public class Pyramid {
                     return 1;
                 } else if (o1.weight < o2.weight) {
                     return -1;
-                } else if (o1.height > o2.height) {
-                    return 1;
                 } else if (o1.height < o2.height) {
+                    return 1;
+                } else if (o1.height > o2.height) {
                     return -1;
                 } else {
                     return 0;
@@ -31,25 +32,35 @@ public class Pyramid {
         for (Item item : items) {
             System.out.println(item.toString());
         }
+
+        int end = 0;
         int[] B = new int[N];
-        for (int i = 0; i < N; i++) {
-            B[i] = 1;
+        B[0] = items[0].height;
+        for (int i = 1; i < N; i++) {
+            Item item = items[i];
+            int index = binSearch(B, 0, end, item.height);
+            B[index] = item.height;
+            end = index > end ? index : end;
         }
 
-        for (int i = 1; i < N; i++) {
-            for (int j = 0; j < i; j++) {
-                if (items[j].height <= items[i].height) {
-                    B[i] = (B[j] + 1) > B[i] ? (B[j] + 1) : B[i];
-                }
+        return end + 1;
+    }
+
+    public static int binSearch(int[] data, int left, int right, int target) {
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (data[mid] < target) {
+                left = mid + 1;
+            } else if (data[mid] > target) {
+                right = mid - 1;
+            } else {
+                return mid;
             }
         }
-        int max = 0;
-        for (int b : B) {
-            max = b > max ? b : max;
-            System.out.print(b+"\t");
-        }
-        return max;
+        return left;
+
     }
+
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);

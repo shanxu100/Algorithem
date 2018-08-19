@@ -1,8 +1,6 @@
-package Permutations;
+package DFS.Permutations;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
