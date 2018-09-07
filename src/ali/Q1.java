@@ -10,7 +10,8 @@ import java.util.Scanner;
 public class Q1 {
 
     public static void main(String[] args) {
-        System.out.println(maxNum(20, 7));;
+        System.out.println(maxNum(20, 7));
+        ;
 
     }
 
@@ -18,6 +19,8 @@ public class Q1 {
     static HashMap<Integer, Integer> map = new HashMap<>(9);
 
     static boolean stop = false;
+    static StringBuilder sb = new StringBuilder();
+
 
     static String maxNum(int m, int n) {
 
@@ -33,29 +36,30 @@ public class Q1 {
 
         N = n;
         int[] holder = new int[n];
-        f(m, n, holder, 0);
-        StringBuilder sb=new StringBuilder();
-        for (int i=0;i<n;i++){
-            sb.append(holder[i]+"");
-        }
+        f(m, holder, 0);
         return sb.toString();
 
     }
 
-    public static void f(int m, int n, int[] holder, int count) {
-        if (m <= 0 || n <= 0 || stop) {
+    public static void f(int m, int[] holder, int count) {
+        if (m <= 0 || stop) {
             return;
         }
 
-        if (count == N - 1) {
+        if (count == N) {
             stop = true;
+            for (int i = 0; i < N; i++) {
+                sb.append(holder[i] + "");
+            }
             return;
-
         }
         for (int i = 9; i > 0; i--) {
             int price = map.get(i);
-            holder[count] = i;
-            f(m - price, n - 1, holder, count + 1);
+            if (m - price > 0) {
+                holder[count] = i;
+                f(m - price, holder, count + 1);
+            }
+
         }
 
     }
