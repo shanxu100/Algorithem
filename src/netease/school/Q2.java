@@ -43,7 +43,7 @@ public class Q2 {
             }
         }
 
-        int result = 0;
+        long result = 0;
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 if (b[i][j] % 2 != 0) {
