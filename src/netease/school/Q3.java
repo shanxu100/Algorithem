@@ -44,7 +44,7 @@ public class Q3 {
 
     public static void f1(int k) {
 
-        System.out.print(a[k - 1].now);
+        System.out.println(a[k - 1].now);
 
     }
 

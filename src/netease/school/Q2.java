@@ -8,7 +8,7 @@ import java.util.Scanner;
  */
 public class Q2 {
 
-    private static int[][] b;
+    private static Long[][] b;
     private static int t;
     private static int N, M;
 
@@ -30,10 +30,10 @@ public class Q2 {
     }
 
     public static void f() {
-        b = new int[N][M];
+        b = new Long[N][M];
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
-                b[i][j] = 0;
+                b[i][j] = 0L;
             }
         }
 
