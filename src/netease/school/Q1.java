@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class Q1 {
 
     private static int[] a=new int[3];
+    int[][] b=new int[1000000000][1000000000];
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
