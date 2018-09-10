@@ -1,5 +1,7 @@
 package telcom;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -7,6 +9,8 @@ import java.util.Scanner;
  * @date Created on 2018/9/10
  */
 public class Q3 {
+
+    public static Map<Integer, Boolean> map = new HashMap<>(5000);
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -37,6 +41,11 @@ public class Q3 {
     }
 
     public static boolean isUgly(int num) {
+        int origNum = num;
+        if (map.containsKey(num)) {
+            return map.get(num);
+        }
+
         while (num % 2 == 0) {
             num /= 2;
         }
@@ -46,7 +55,14 @@ public class Q3 {
         while (num % 5 == 0) {
             num /= 5;
         }
-        return (num == 1) ? true : false;
+        if (num == 1) {
+            map.put(origNum, true);
+            return true;
+        } else {
+            map.put(origNum, false);
+            return false;
+        }
+
     }
 
 }
