@@ -26,43 +26,36 @@ public class Q3 {
     }
 
     public static int f(int N) {
-        if (N <= 0) {
-            return 0;
-        }
-        int number = 0;
-        int count = 0;
-        while (count < N) {
-            number++;
-            if (isUgly(number)) {
-                count++;
+
+        int[] a = new int[N];
+        a[0] = 1;
+        int t2 = 0;
+        int t3 = 0;
+        int t5 = 0;
+        for (int i = 1; i < N; i++) {
+            int min = getMin(a[t2] * 2, a[t3] * 3, a[t5] * 5);
+            a[i] = min;
+            while (a[t2] * 2 == a[i])
+            {
+                t2++;
+            }
+            while (a[t3] * 3 == a[i])
+            {
+                t3++;
+            }
+            while (a[t5] * 5 == a[i])
+            {
+                t5++;
             }
         }
-        return number;
-    }
-
-    public static boolean isUgly(int num) {
-        int origNum = num;
-        if (map.containsKey(num)) {
-            return map.get(num);
-        }
-
-        while (num % 2 == 0) {
-            num /= 2;
-        }
-        while (num % 3 == 0) {
-            num /= 3;
-        }
-        while (num % 5 == 0) {
-            num /= 5;
-        }
-        if (num == 1) {
-            map.put(origNum, true);
-            return true;
-        } else {
-            map.put(origNum, false);
-            return false;
-        }
+        return a[N - 1];
 
     }
+
+    public static int getMin(int n1, int n2, int n3) {
+        int min = (n1 < n2) ? n1 : n2;
+        return min < n3 ? min : n3;
+    }
+
 
 }
