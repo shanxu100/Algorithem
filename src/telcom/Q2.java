@@ -39,6 +39,8 @@ public class Q2 {
             while (start2 <= i) {
                 if (chars1[start1] == chars2[start2]) {
                     count++;
+                }else {
+                    break;
                 }
                 start1++;
                 start2++;
