@@ -16,8 +16,7 @@ public class Q1 {
 
 
         while (in.hasNext()) {
-            s = in.nextLine();
-            System.out.println(deleteS(s));
+
         }
 
 
