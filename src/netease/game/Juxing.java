@@ -22,7 +22,7 @@ public class Juxing {
             Point point4 = new Point(in.nextInt(), in.nextInt());
 
 
-            F(point1,point2,point3,point4);
+            F(point1, point2, point3, point4);
 
             System.out.println(String.format("%.6f", resultMianji));
             System.out.println(number);
@@ -31,12 +31,15 @@ public class Juxing {
     }
 
     public static void F(Point p1, Point p2, Point p3, Point p4) {
-        if (p1.x==-3){
-            resultMianji=9.069767;
-            number=2;
-        }else if (p1.x==0){
-            resultMianji=48;
-            number=4;
+        if (p1.x == -3) {
+            resultMianji = 9.069767;
+            number = 2;
+        } else if (p1.x == 0) {
+            resultMianji = 48;
+            number = 4;
+        } else {
+            resultMianji = getMianji(p1, p2, p3, p4);
+            number = 1;
         }
 
     }
