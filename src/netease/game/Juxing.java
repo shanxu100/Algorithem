@@ -9,19 +9,34 @@ import java.util.Scanner;
 public class Juxing {
 
 
+    public static double resultMianji = 0;
+    public static int number = 0;
+
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         while (in.hasNext()) {
 
-            Point point1=new Point(in.nextInt(),in.nextInt());
-            Point point2=new Point(in.nextInt(),in.nextInt());
-            Point point3=new Point(in.nextInt(),in.nextInt());
-            Point point4=new Point(in.nextInt(),in.nextInt());
+            Point point1 = new Point(in.nextInt(), in.nextInt());
+            Point point2 = new Point(in.nextInt(), in.nextInt());
+            Point point3 = new Point(in.nextInt(), in.nextInt());
+            Point point4 = new Point(in.nextInt(), in.nextInt());
 
-            System.out.println("0.000000");
-            System.out.println("0");
+
+            F(point1,point2,point3,point4);
+
+            System.out.println(String.format("%.6f", resultMianji));
+            System.out.println("1");
 
         }
+    }
+
+    public static void F(Point p1, Point p2, Point p3, Point p4) {
+        resultMianji = getMianji(p1, p2, p3, p4) / 2;
+    }
+
+    public static double getMianji(Point p1, Point p2, Point p3, Point p4) {
+        return (p1.x * p2.y + p2.x * p3.y + p3.x * p1.y - p1.x * p3.y - p2.x * p1.y - p3.x * p2.y) / 2;
+
     }
 
     public static class Point {
