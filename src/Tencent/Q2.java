@@ -19,7 +19,7 @@ public class Q2 {
             s.replace(" ", "");
             String[] ss = s.split("[0]+");
             double result=Math.pow(2,ss.length-1);
-            System.out.println(String.format("%.0f",result));
+            System.out.println(s.length()/2);
 
         }
 
