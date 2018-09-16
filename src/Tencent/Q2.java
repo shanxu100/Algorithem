@@ -12,12 +12,15 @@ public class Q2 {
     public static int[] arr;
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        N = in.nextInt();
-        arr=new int[N];
-        for (int i=0;i<N;i++){
-            arr[i]=in.nextInt();
+        while (in.hasNext()){
+            N = in.nextInt();
+            arr=new int[N];
+            for (int i=0;i<N;i++){
+                arr[i]=in.nextInt();
+            }
+            System.out.println(N/2+"");
+
         }
-        System.out.println(N/2+"");
 
     }
 }
