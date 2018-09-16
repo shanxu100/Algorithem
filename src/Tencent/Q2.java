@@ -9,17 +9,16 @@ import java.util.Scanner;
 public class Q2 {
 
     public static int N;
-    public static String s;
-
+    public static int[] arr;
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        while (in.hasNext()) {
-            N = Integer.parseInt(in.nextLine());
-            s = in.nextLine();
-            s.replace(" ", "");
-            String[] ss = s.split("[0]+");
-            double result=Math.pow(2,ss.length-1);
-            System.out.println(s.length()/2);
+        while (in.hasNext()){
+            N = in.nextInt();
+            arr=new int[N];
+            for (int i=0;i<N;i++){
+                arr[i]=in.nextInt();
+            }
+            System.out.println(N/2+"");
 
         }
 
